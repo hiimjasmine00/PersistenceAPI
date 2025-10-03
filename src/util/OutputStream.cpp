@@ -196,7 +196,7 @@ inline void writeGenericUnorderedMap(Stream* o_stream, gd::unordered_map<K,V>& i
     o_stream->write(reinterpret_cast<char*>(&l_size), 4);
     //geode::log::info("Unordered Map CustomWrite SIZE out: {}", l_size);
     if (l_size == 0) return;
-    for (std::pair<K,V> l_pair : i_value) {
+    for (gd::pair<K,V> l_pair : i_value) {
         o_stream->write(reinterpret_cast<char*>(&l_pair.first), sizeof(K));
         reinterpret_cast<W&>(l_pair.second).save(*o_stream);
     }
@@ -255,7 +255,7 @@ void Stream::operator<<<int, EnhancedGameObject*>(gd::unordered_map<int, Enhance
     if (l_size == 0) return;
     int l_objectIndex;
     PAPlayLayer* l_playLayer = static_cast<PAPlayLayer*>(PlayLayer::get());
-    for (std::pair<int, EnhancedGameObject*> l_pair : i_value) {
+    for (gd::pair<int, EnhancedGameObject*> l_pair : i_value) {
         this->write(reinterpret_cast<char*>(&l_pair.first), sizeof(int));
         int l_objectIndex = -1;
         if (l_playLayer) l_objectIndex = l_playLayer->getGameObjectIndex(l_pair.second);
@@ -271,7 +271,7 @@ inline void writeGenericMap(Stream* o_stream, gd::map<K,V>& i_value) {
     o_stream->write(reinterpret_cast<char*>(&l_size), 4);
     //geode::log::info("Map CustomWrite SIZE out: {}", l_size);
     if (l_size == 0) return;
-    for (std::pair<K,V> l_pair : i_value) {
+    for (gd::pair<K,V> l_pair : i_value) {
         o_stream->write(reinterpret_cast<char*>(&l_pair.first), sizeof(K));
         reinterpret_cast<W&>(l_pair.second).save(*o_stream);
     }

@@ -90,31 +90,31 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAEnterEffectInstance& 
     i_stream >> o_value.m_gameObject;
     SEPARATOR_I
     if (i_stream.getPAVersion() > 1) {
-        i_stream >> o_value.m_unkBool1;
+        i_stream >> o_value.m_reversed;
         SEPARATOR_I
-        i_stream >> o_value.m_unkFloat1;
+        i_stream >> o_value.m_targetID;
         SEPARATOR_I
-        i_stream >> o_value.m_unkFloat2;
+        i_stream >> o_value.m_centerID;
         SEPARATOR_I
         i_stream >> o_value.m_unkFloat3;
         SEPARATOR_I
-        i_stream >> o_value.m_unkFloat4;
+        i_stream >> o_value.m_easeIndex;
         SEPARATOR_I
-        i_stream >> o_value.m_unkBool2;
+        i_stream >> o_value.m_paused;
         SEPARATOR_I
-        i_stream >> o_value.m_unkBool3;
+        i_stream >> o_value.m_paused2;
         SEPARATOR_I
         i_stream >> o_value.m_unkBool4;
         SEPARATOR_I
-        i_stream >> o_value.m_unkFloat5;
+        i_stream >> o_value.m_targetGroupIndex;
     }
     else {
         i_stream.read(reinterpret_cast<char*>(&o_value) + offsetof(PAEnterEffectInstance,m_gameObject) + sizeof(GameObject*), 28);
     }
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_unkVecInt;
+    i_stream >> o_value.m_easeIndices;
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_unkFloat6;
+    i_stream >> o_value.m_controlID;
     SEPARATOR_I
 }
 
@@ -188,34 +188,34 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAEnterEffectInstance& 
     SEPARATOR_O
     o_stream << i_value.m_gameObject;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool1;
+    o_stream << i_value.m_reversed;
     SEPARATOR_O
-    o_stream << i_value.m_unkFloat1;
+    o_stream << i_value.m_targetID;
     SEPARATOR_O
-    o_stream << i_value.m_unkFloat2;
+    o_stream << i_value.m_centerID;
     SEPARATOR_O
     o_stream << i_value.m_unkFloat3;
     SEPARATOR_O
-    o_stream << i_value.m_unkFloat4;
+    o_stream << i_value.m_easeIndex;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool2;
+    o_stream << i_value.m_paused;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool3;
+    o_stream << i_value.m_paused2;
     SEPARATOR_O
     o_stream << i_value.m_unkBool4;
     SEPARATOR_O
-    o_stream << i_value.m_unkFloat5;
+    o_stream << i_value.m_targetGroupIndex;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_unkVecInt;
+    o_stream << i_value.m_easeIndices;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_unkFloat6;
+    o_stream << i_value.m_controlID;
     SEPARATOR_O
 }
 
 #if defined(PA_DEBUG) && defined(PA_DESCRIBE)
 void PAEnterEffectInstance::describe() {
     int i = 0;
-    for (std::pair<int, EnterEffectAnimValue> l_pair : m_enterEffectAnimMap) {
+    for (gd::pair<int, EnterEffectAnimValue> l_pair : m_enterEffectAnimMap) {
         log::info("[PAEnterEffectInstance - describe] m_enterEffectAnimMap element {} key: {}", i, l_pair.first);
         reinterpret_cast<PAEnterEffectAnimValue*>(&l_pair.second)->describe();
         i++;
@@ -260,20 +260,20 @@ void PAEnterEffectInstance::describe() {
     PAPlayLayer* l_playLayer = static_cast<PAPlayLayer*>(PlayLayer::get());
     if (l_playLayer) l_objectIndex = l_playLayer->getGameObjectIndex(m_gameObject);
     log::info("[PAEnterEffectInstance - describe] m_gameObject l_objectIndex: {}", l_objectIndex);
-    log::info("[PAEnterEffectInstance - describe] m_unkBool1: {}", m_unkBool1);
-    log::info("[PAEnterEffectInstance - describe] m_unkFloat1: {}", m_unkFloat1);
-    log::info("[PAEnterEffectInstance - describe] m_unkFloat2: {}", m_unkFloat2);
+    log::info("[PAEnterEffectInstance - describe] m_reversed: {}", m_reversed);
+    log::info("[PAEnterEffectInstance - describe] m_targetID: {}", m_targetID);
+    log::info("[PAEnterEffectInstance - describe] m_centerID: {}", m_centerID);
     log::info("[PAEnterEffectInstance - describe] m_unkFloat3: {}", m_unkFloat3);
-    log::info("[PAEnterEffectInstance - describe] m_unkFloat4: {}", m_unkFloat4);
-    log::info("[PAEnterEffectInstance - describe] m_unkBool2: {}", m_unkBool2);
-    log::info("[PAEnterEffectInstance - describe] m_unkBool3: {}", m_unkBool3);
+    log::info("[PAEnterEffectInstance - describe] m_easeIndex: {}", m_easeIndex);
+    log::info("[PAEnterEffectInstance - describe] m_paused: {}", m_paused);
+    log::info("[PAEnterEffectInstance - describe] m_paused2: {}", m_paused2);
     log::info("[PAEnterEffectInstance - describe] m_unkBool4: {}", m_unkBool4);
-    log::info("[PAEnterEffectInstance - describe] m_unkFloat5: {}", m_unkFloat5);
-    int l_size = m_unkVecInt.size();
-    log::info("[PAEnterEffectInstance - describe] m_unkVecInt.size(): {}", l_size);
+    log::info("[PAEnterEffectInstance - describe] m_targetGroupIndex: {}", m_targetGroupIndex);
+    int l_size = m_easeIndices.size();
+    log::info("[PAEnterEffectInstance - describe] m_easeIndices.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAEnterEffectInstance - describe] m_unkVecInt[{}]: {}", i, m_unkVecInt[i]);
+        log::info("[PAEnterEffectInstance - describe] m_easeIndices[{}]: {}", i, m_easeIndices[i]);
     }
-    log::info("[PAEnterEffectInstance - describe] m_unkFloat6: {}", m_unkFloat6);
+    log::info("[PAEnterEffectInstance - describe] m_controlID: {}", m_controlID);
 }
 #endif

@@ -191,7 +191,7 @@ void PAPlayerCheckpoint::describe() {
     log::info("[PAPlayerCheckpoint - describe] m_isRobot: {}", m_isRobot);
     log::info("[PAPlayerCheckpoint - describe] m_isSpider: {}", m_isSpider);
     log::info("[PAPlayerCheckpoint - describe] m_isOnGround: {}", m_isOnGround);
-    log::info("[PAPlayerCheckpoint - describe] m_ghostType: {}", m_ghostType);
+    log::info("[PAPlayerCheckpoint - describe] m_ghostType: {}", *reinterpret_cast<int*>(&m_ghostType));
     log::info("[PAPlayerCheckpoint - describe] m_miniMode: {}", m_miniMode);
     log::info("[PAPlayerCheckpoint - describe] m_speed: {}", m_speed);
     log::info("[PAPlayerCheckpoint - describe] m_hidden: {}", m_hidden);

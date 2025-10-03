@@ -41,11 +41,11 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAFMODSoundState& o_val
         SEPARATOR_I
         i_stream >> o_value.m_reverb;
         SEPARATOR_I
-        i_stream >> o_value.m_unkInt1;
+        i_stream >> o_value.m_effectID;
         SEPARATOR_I
-        i_stream >> o_value.m_unkBool1;
+        i_stream >> o_value.m_isMusic;
         SEPARATOR_I
-        i_stream >> o_value.m_keyForFMODMusicMap;
+        i_stream >> o_value.m_musicID;
         SEPARATOR_I
         i_stream >> o_value.m_unkBool2;
     }
@@ -81,11 +81,11 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAFMODSoundState& i_val
     SEPARATOR_O
     o_stream << i_value.m_reverb;
     SEPARATOR_O
-    o_stream << i_value.m_unkInt1;
+    o_stream << i_value.m_effectID;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool1;
+    o_stream << i_value.m_isMusic;
     SEPARATOR_O
-    o_stream << i_value.m_keyForFMODMusicMap;
+    o_stream << i_value.m_musicID;
     SEPARATOR_O
     o_stream << i_value.m_unkBool2;
     SEPARATOR_O
@@ -106,9 +106,9 @@ void PAFMODSoundState::describe() {
     log::info("[PAFMODSoundState - describe] m_pitch: {}", m_pitch);
     log::info("[PAFMODSoundState - describe] m_fastFourierTransform: {}", m_fastFourierTransform);
     log::info("[PAFMODSoundState - describe] m_reverb: {}", m_reverb);
-    log::info("[PAFMODSoundState - describe] m_unkInt1: {}", m_unkInt1);
-    log::info("[PAFMODSoundState - describe] m_unkBool1: {}", m_unkBool1);
-    log::info("[PAFMODSoundState - describe] m_keyForFMODMusicMap: {}", m_keyForFMODMusicMap);
+    log::info("[PAFMODSoundState - describe] m_effectID: {}", m_effectID);
+    log::info("[PAFMODSoundState - describe] m_isMusic: {}", m_isMusic);
+    log::info("[PAFMODSoundState - describe] m_musicID: {}", m_musicID);
     log::info("[PAFMODSoundState - describe] m_unkBool2: {}", m_unkBool2);
 }
 #endif

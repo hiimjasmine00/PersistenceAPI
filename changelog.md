@@ -1,3 +1,7 @@
+## v1.1.0
+
+* Added support for reading and writing long types, updated headers to support newer Geode versions
+
 ## v1.0.0
 
 * Whole rework of multiple classes, support backwards compatibility

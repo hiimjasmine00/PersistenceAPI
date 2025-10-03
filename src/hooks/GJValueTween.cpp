@@ -33,9 +33,9 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAGJValueTween& o_value
         SEPARATOR_I;
         i_stream >> o_value.m_disabled;
         SEPARATOR_I;
-        i_stream >> o_value.m_unkInt1;
+        i_stream >> o_value.m_uniqueID;
         SEPARATOR_I;
-        i_stream >> o_value.m_unkInt2;
+        i_stream >> o_value.m_controlID;
         SEPARATOR_I;
     } else {
         i_stream.read(reinterpret_cast<char*>(&o_value), sizeof(GJValueTween));
@@ -61,9 +61,9 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAGJValueTween& i_value
     SEPARATOR_O;
     o_stream << i_value.m_disabled;
     SEPARATOR_O;
-    o_stream << i_value.m_unkInt1;
+    o_stream << i_value.m_uniqueID;
     SEPARATOR_O;
-    o_stream << i_value.m_unkInt2;
+    o_stream << i_value.m_controlID;
     SEPARATOR_O;
 }
 
@@ -78,7 +78,7 @@ void PAGJValueTween::describe() {
     log::info("[PAGJValueTween - describe] m_easingRate: {}", m_easingRate);
     log::info("[PAGJValueTween - describe] m_finished: {}", m_finished);
     log::info("[PAGJValueTween - describe] m_disabled: {}", m_disabled);
-    log::info("[PAGJValueTween - describe] m_unkInt1: {}", m_unkInt1);
-    log::info("[PAGJValueTween - describe] m_unkInt2: {}", m_unkInt2);
+    log::info("[PAGJValueTween - describe] m_uniqueID: {}", m_uniqueID);
+    log::info("[PAGJValueTween - describe] m_controlID: {}", m_controlID);
 }
 #endif

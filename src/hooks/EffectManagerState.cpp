@@ -131,12 +131,12 @@ void PAEffectManagerState::clean() {
     m_unkVecPulseEffectAction.clear();
     gd::vector<PulseEffectAction>().swap(m_unkVecPulseEffectAction);
 
-    for (std::pair<int, gd::vector<PulseEffectAction>> l_pair : m_unorderedMapInt_vectorPulseEffectAction) {
+    for (gd::pair<int, gd::vector<PulseEffectAction>> l_pair : m_unorderedMapInt_vectorPulseEffectAction) {
         l_pair.second.clear();
         gd::vector<PulseEffectAction>().swap(l_pair.second);
     }
 
-    for (std::pair<int, gd::vector<CountTriggerAction>> l_pair : m_unorderedMapInt_vectorCountTriggerAction) {
+    for (gd::pair<int, gd::vector<CountTriggerAction>> l_pair : m_unorderedMapInt_vectorCountTriggerAction) {
         l_pair.second.clear();
         gd::vector<CountTriggerAction>().swap(l_pair.second);
     }
@@ -156,7 +156,7 @@ void PAEffectManagerState::clean() {
     m_vectorGroupCommandObject2.clear();
     gd::vector<GroupCommandObject2>().swap(m_vectorGroupCommandObject2);
 
-    for (std::pair<int, gd::vector<TimerTriggerAction>> l_pair : m_unorderedMapInt_vectorTimerTriggerAction) {
+    for (gd::pair<int, gd::vector<TimerTriggerAction>> l_pair : m_unorderedMapInt_vectorTimerTriggerAction) {
         l_pair.second.clear();
         gd::vector<TimerTriggerAction>().swap(l_pair.second);
     }
@@ -179,7 +179,7 @@ void PAEffectManagerState::describe() {
     l_size = m_unorderedMapInt_vectorPulseEffectAction.size();
     log::info("[PAEffectManagerState - describe] m_unorderedMapInt_vectorPulseEffectAction.size(): {}", l_size);
     int i = 0;
-    for (std::pair<int, gd::vector<PulseEffectAction>> l_pair : m_unorderedMapInt_vectorPulseEffectAction) {
+    for (gd::pair<int, gd::vector<PulseEffectAction>> l_pair : m_unorderedMapInt_vectorPulseEffectAction) {
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_vectorPulseEffectAction element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_vectorPulseEffectAction element {} value:", i);
         l_size = l_pair.second.size();
@@ -191,7 +191,7 @@ void PAEffectManagerState::describe() {
         i++;
     }
     i = 0;
-    for (std::pair<int, gd::vector<CountTriggerAction>> l_pair : m_unorderedMapInt_vectorCountTriggerAction) {
+    for (gd::pair<int, gd::vector<CountTriggerAction>> l_pair : m_unorderedMapInt_vectorCountTriggerAction) {
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_vectorCountTriggerAction element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_vectorCountTriggerAction element {} value:", i);
         l_size = l_pair.second.size();
@@ -208,7 +208,7 @@ void PAEffectManagerState::describe() {
         i++;
     }
     i = 0;
-    for (std::pair<int, int> l_pair : m_mapInt_Int) {
+    for (gd::pair<int, int> l_pair : m_mapInt_Int) {
         log::info("[PAEffectManagerState - describe] m_mapInt_Int element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_mapInt_Int element {} value: {}", i, l_pair.second);
         i++;
@@ -216,7 +216,7 @@ void PAEffectManagerState::describe() {
     l_size = m_unorderedMapInt_OpacityEffectAction.size();
     log::info("[PAEffectManagerState - describe] m_unorderedMapInt_OpacityEffectAction.size(): {}", l_size);
     i = 0;
-    for (std::pair<int, OpacityEffectAction> l_pair : m_unorderedMapInt_OpacityEffectAction) {
+    for (gd::pair<int, OpacityEffectAction> l_pair : m_unorderedMapInt_OpacityEffectAction) {
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_OpacityEffectAction element {} key: {}", i, l_pair.first);
         reinterpret_cast<PAOpacityEffectAction*>(&l_pair.second)->describe();
         i++;
@@ -246,13 +246,13 @@ void PAEffectManagerState::describe() {
         reinterpret_cast<PASpawnTriggerAction*>(&m_vectorSpawnTriggerAction[i])->describe();
     }
     i = 0;
-    for (std::pair<int, int> l_pair : m_itemCountMap) {
+    for (gd::pair<int, int> l_pair : m_itemCountMap) {
         log::info("[PAEffectManagerState - describe] m_itemCountMap element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_itemCountMap element {} value: {}", i, l_pair.second);
         i++;
     }
     i = 0;
-    for (std::pair<int, bool> l_pair : m_unorderedMapInt_bool) {
+    for (gd::pair<int, bool> l_pair : m_unorderedMapInt_bool) {
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_bool element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_bool element {} value: {}", i, l_pair.second);
         i++;
@@ -264,7 +264,7 @@ void PAEffectManagerState::describe() {
         reinterpret_cast<PAGroupCommandObject2*>(&m_vectorGroupCommandObject2[i])->describe();
     }
     i = 0;
-    for (std::pair<int, std::pair<double,double>> l_pair : m_unorderedMapInt_pair_double_double) {
+    for (gd::pair<int, std::pair<double,double>> l_pair : m_unorderedMapInt_pair_double_double) {
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_pair_double_double element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_pair_double_double element {} value: {}", i, l_pair.second);
         i++;
@@ -277,14 +277,14 @@ void PAEffectManagerState::describe() {
     l_size = m_timerItemMap.size();
     log::info("[PAEffectManagerState - describe] m_timerItemMap.size(): {}", l_size);
     i = 0;
-    for (std::pair<int, TimerItem> l_pair : m_timerItemMap) {
+    for (gd::pair<int, TimerItem> l_pair : m_timerItemMap) {
         log::info("[PAEffectManagerState - describe] m_timerItemMap element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_timerItemMap element {} value:", i);
         reinterpret_cast<PATimerItem*>(&l_pair.second)->describe();
         i++;
     }
     i = 0;
-    for (std::pair<int, gd::vector<TimerTriggerAction>> l_pair : m_unorderedMapInt_vectorTimerTriggerAction) {
+    for (gd::pair<int, gd::vector<TimerTriggerAction>> l_pair : m_unorderedMapInt_vectorTimerTriggerAction) {
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_vectorTimerTriggerAction element {} key: {}", i, l_pair.first);
         log::info("[PAEffectManagerState - describe] m_unorderedMapInt_vectorTimerTriggerAction element {} value:", i);
         l_size = l_pair.second.size();

@@ -69,7 +69,9 @@ namespace persistenceAPI {
         PA_OPERATOR_READ(cocos2d::CCAffineTransform)
         PA_OPERATOR_READ(cocos2d::ccHSVValue)
         PA_OPERATOR_READ(cocos2d::ccColor3B)
-        PA_OPERATOR_READ(uint64_t)
+        PA_OPERATOR_READ(unsigned long)
+        PA_OPERATOR_READ(long)
+        PA_OPERATOR_READ(unsigned long long)
         PA_OPERATOR_READ(long long)
         PA_OPERATOR_READ(EasingType)
         PA_OPERATOR_READ(TouchTriggerType)
@@ -91,7 +93,9 @@ namespace persistenceAPI {
         PA_OPERATOR_WRITE(cocos2d::CCAffineTransform)
         PA_OPERATOR_WRITE(cocos2d::ccHSVValue)
         PA_OPERATOR_WRITE(cocos2d::ccColor3B)
-        PA_OPERATOR_WRITE(uint64_t)
+        PA_OPERATOR_WRITE(unsigned long)
+        PA_OPERATOR_WRITE(long)
+        PA_OPERATOR_WRITE(unsigned long long)
         PA_OPERATOR_WRITE(long long)
         PA_OPERATOR_WRITE(EasingType)
         PA_OPERATOR_WRITE(TouchTriggerType)
@@ -562,7 +566,7 @@ namespace persistenceAPI {
             unsigned int l_size = i_value.size();
             //geode::log::info("Unordered Map SIZE out: {}", l_size);
             write(reinterpret_cast<char*>(&l_size), 4);
-            for (std::pair<K,V> l_pair : i_value) {
+            for (gd::pair<K,V> l_pair : i_value) {
                 write(reinterpret_cast<char*>(&l_pair.first), sizeof(K));
                 write(reinterpret_cast<char*>(&l_pair.second), sizeof(V));
             }
@@ -573,7 +577,7 @@ namespace persistenceAPI {
             unsigned int l_size = i_value.size();
             //geode::log::info("Unordered Map key->vector<T> SIZE out: {}", l_size);
             write(reinterpret_cast<char*>(&l_size), 4);
-            for (std::pair<K,gd::vector<V>> l_pair : i_value) {
+            for (gd::pair<K,gd::vector<V>> l_pair : i_value) {
                 write(reinterpret_cast<char*>(&l_pair.first), sizeof(K));
                 *this << l_pair.second;
             }
@@ -625,7 +629,7 @@ namespace persistenceAPI {
             unsigned int l_size = i_value.size();
             //geode::log::info("Map SIZE out: {}", l_size);
             write(reinterpret_cast<char*>(&l_size), 4);
-            for (std::pair<K,V> l_pair : i_value) {
+            for (gd::pair<K,V> l_pair : i_value) {
                 write(reinterpret_cast<char*>(&l_pair.first), sizeof(K));
                 write(reinterpret_cast<char*>(&l_pair.second), sizeof(V));
             }
@@ -636,7 +640,7 @@ namespace persistenceAPI {
             unsigned int l_size = i_value.size();
             //geode::log::info("Unordered Map key->vector<T> SIZE out: {}", l_size);
             write(reinterpret_cast<char*>(&l_size), 4);
-            for (std::pair<K,gd::vector<V>> l_pair : i_value) {
+            for (gd::pair<K,gd::vector<V>> l_pair : i_value) {
                 write(reinterpret_cast<char*>(&l_pair.first), sizeof(K));
                 *this << l_pair.second;
             }

@@ -17,18 +17,18 @@ void PASavedActiveObjectState::save(Stream& o_stream) {
 inline void persistenceAPI::operator>>(Stream& i_stream, PASavedActiveObjectState& o_value) {
     i_stream >> o_value.m_gameObject;
     SEPARATOR_I
-    i_stream >> o_value.m_unkBool1;
+    i_stream >> o_value.m_activatedByPlayer1;
     SEPARATOR_I
-    i_stream >> o_value.m_unkBool2;
+    i_stream >> o_value.m_activatedByPlayer2;
     SEPARATOR_I_END
 }
 
 inline void persistenceAPI::operator<<(Stream& o_stream, PASavedActiveObjectState& i_value) {
     o_stream << i_value.m_gameObject;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool1;
+    o_stream << i_value.m_activatedByPlayer1;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool2;
+    o_stream << i_value.m_activatedByPlayer2;
     SEPARATOR_O_END
 }
 
@@ -38,7 +38,7 @@ void PASavedActiveObjectState::describe() {
     PAPlayLayer* l_playLayer = static_cast<PAPlayLayer*>(PlayLayer::get());
     if (l_playLayer) l_objectIndex = l_playLayer->getGameObjectIndex(m_gameObject);
     log::info("[PASavedActiveObjectState - describe] l_objectIndex: {}", l_objectIndex);
-    log::info("[PASavedActiveObjectState - describe] m_unkBool1: {}", m_unkBool1);
-    log::info("[PASavedActiveObjectState - describe] m_unkBool2: {}", m_unkBool2);
+    log::info("[PASavedActiveObjectState - describe] m_activatedByPlayer1: {}", m_activatedByPlayer1);
+    log::info("[PASavedActiveObjectState - describe] m_activatedByPlayer2: {}", m_activatedByPlayer2);
 }
 #endif

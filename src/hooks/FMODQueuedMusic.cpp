@@ -19,37 +19,37 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAFMODQueuedMusic& o_va
     i_stream >> o_value.m_filePath;
     STR_SEPARATOR_I
     if (i_stream.getPAVersion() > 1) {
-        i_stream >> o_value.m_unkFloat1;
+        i_stream >> o_value.m_pitch;
         SEPARATOR_I
         i_stream >> o_value.m_unkFloat2;
         SEPARATOR_I
-        i_stream >> o_value.m_unkFloat3;
+        i_stream >> o_value.m_volume;
         SEPARATOR_I
-        i_stream >> o_value.m_unkInt1;
+        i_stream >> o_value.m_start;
         SEPARATOR_I
-        i_stream >> o_value.m_unkInt2;
+        i_stream >> o_value.m_end;
         SEPARATOR_I
-        i_stream >> o_value.m_unkInt3;
+        i_stream >> o_value.m_fadeIn;
         SEPARATOR_I
-        i_stream >> o_value.m_unkInt4;
+        i_stream >> o_value.m_fadeOut;
         SEPARATOR_I
-        i_stream >> o_value.m_unkBool1;
+        i_stream >> o_value.m_loop;
         SEPARATOR_I
-        i_stream >> o_value.m_keyForFMODMusicMap1;
+        i_stream >> o_value.m_musicID;
         SEPARATOR_I
-        i_stream >> o_value.m_unkBool2;
+        i_stream >> o_value.m_stopMusic;
         SEPARATOR_I
-        i_stream >> o_value.m_keyForFMODMusicMap2;
+        i_stream >> o_value.m_channelID;
         SEPARATOR_I
-        i_stream >> o_value.m_unkBool3;
+        i_stream >> o_value.m_noPrepare;
         SEPARATOR_I
-        i_stream >> o_value.m_unkFloat4;
+        i_stream >> o_value.m_queuedStatus;
         SEPARATOR_I
         int l_dummy;
         i_stream >> l_dummy;
         if (l_dummy == -1) {
             //TODO: This may be wrong
-            o_value.m_sound = FMODAudioEngine::get()->preloadMusic(o_value.m_filePath, true, o_value.m_keyForFMODMusicMap1);
+            o_value.m_sound = FMODAudioEngine::get()->preloadMusic(o_value.m_filePath, true, o_value.m_musicID);
         } else {
             //geode::log::info("!!!!!!!!!!!!!!!!!!! NOT Trying to load FMODQueuedMusic with preloadMusic CAUSE it was nullptr");
             o_value.m_sound = nullptr;
@@ -66,31 +66,31 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAFMODQueuedMusic& i_va
     STR_SEPARATOR_O
     o_stream << i_value.m_filePath;
     STR_SEPARATOR_O
-    o_stream << i_value.m_unkFloat1;
+    o_stream << i_value.m_pitch;
     SEPARATOR_O
     o_stream << i_value.m_unkFloat2;
     SEPARATOR_O
-    o_stream << i_value.m_unkFloat3;
+    o_stream << i_value.m_volume;
     SEPARATOR_O
-    o_stream << i_value.m_unkInt1;
+    o_stream << i_value.m_start;
     SEPARATOR_O
-    o_stream << i_value.m_unkInt2;
+    o_stream << i_value.m_end;
     SEPARATOR_O
-    o_stream << i_value.m_unkInt3;
+    o_stream << i_value.m_fadeIn;
     SEPARATOR_O
-    o_stream << i_value.m_unkInt4;
+    o_stream << i_value.m_fadeOut;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool1;
+    o_stream << i_value.m_loop;
     SEPARATOR_O
-    o_stream << i_value.m_keyForFMODMusicMap1;
+    o_stream << i_value.m_musicID;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool2;
+    o_stream << i_value.m_stopMusic;
     SEPARATOR_O
-    o_stream << i_value.m_keyForFMODMusicMap2;
+    o_stream << i_value.m_channelID;
     SEPARATOR_O
-    o_stream << i_value.m_unkBool3;
+    o_stream << i_value.m_noPrepare;
     SEPARATOR_O
-    o_stream << i_value.m_unkFloat4;
+    o_stream << i_value.m_queuedStatus;
     SEPARATOR_O
     int l_dummy;
     if (i_value.m_sound == nullptr) {
@@ -107,19 +107,19 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAFMODQueuedMusic& i_va
 #if defined(PA_DEBUG) && defined(PA_DESCRIBE)
 void PAFMODQueuedMusic::describe() {
     log::info("[PAFMODQueuedMusic - describe] m_filePath: {}", m_filePath);
-    log::info("[PAFMODQueuedMusic - describe] m_unkFloat1: {}", m_unkFloat1);
+    log::info("[PAFMODQueuedMusic - describe] m_pitch: {}", m_pitch);
     log::info("[PAFMODQueuedMusic - describe] m_unkFloat2: {}", m_unkFloat2);
-    log::info("[PAFMODQueuedMusic - describe] m_unkFloat3: {}", m_unkFloat3);
-    log::info("[PAFMODQueuedMusic - describe] m_unkInt1: {}", m_unkInt1);
-    log::info("[PAFMODQueuedMusic - describe] m_unkInt2: {}", m_unkInt2);
-    log::info("[PAFMODQueuedMusic - describe] m_unkInt3: {}", m_unkInt3);
-    log::info("[PAFMODQueuedMusic - describe] m_unkInt4: {}", m_unkInt4);
-    log::info("[PAFMODQueuedMusic - describe] m_unkBool1: {}", m_unkBool1);
-    log::info("[PAFMODQueuedMusic - describe] m_keyForFMODMusicMap1: {}", m_keyForFMODMusicMap1);
-    log::info("[PAFMODQueuedMusic - describe] m_unkBool2: {}", m_unkBool2);
-    log::info("[PAFMODQueuedMusic - describe] m_keyForFMODMusicMap2: {}", m_keyForFMODMusicMap2);
-    log::info("[PAFMODQueuedMusic - describe] m_unkBool3: {}", m_unkBool3);
-    log::info("[PAFMODQueuedMusic - describe] m_unkFloat4: {}", m_unkFloat4);
+    log::info("[PAFMODQueuedMusic - describe] m_volume: {}", m_volume);
+    log::info("[PAFMODQueuedMusic - describe] m_start: {}", m_start);
+    log::info("[PAFMODQueuedMusic - describe] m_end: {}", m_end);
+    log::info("[PAFMODQueuedMusic - describe] m_fadeIn: {}", m_fadeIn);
+    log::info("[PAFMODQueuedMusic - describe] m_fadeOut: {}", m_fadeOut);
+    log::info("[PAFMODQueuedMusic - describe] m_loop: {}", m_loop);
+    log::info("[PAFMODQueuedMusic - describe] m_musicID: {}", m_musicID);
+    log::info("[PAFMODQueuedMusic - describe] m_stopMusic: {}", m_stopMusic);
+    log::info("[PAFMODQueuedMusic - describe] m_channelID: {}", m_channelID);
+    log::info("[PAFMODQueuedMusic - describe] m_noPrepare: {}", m_noPrepare);
+    log::info("[PAFMODQueuedMusic - describe] m_queuedStatus: {}", m_queuedStatus);
     log::info("[PAFMODQueuedMusic - describe] m_sound: {}", *reinterpret_cast<size_t*>(&m_sound));
     log::info("[PAFMODQueuedMusic - describe] m_dontReset: {}", m_dontReset);
 }

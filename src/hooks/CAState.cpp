@@ -21,13 +21,13 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PACAState& o_value) {
         SEPARATOR_I
         i_stream >> o_value.m_color;
         SEPARATOR_I
-        i_stream >> o_value.m_property19;
+        i_stream >> o_value.m_paused;
         SEPARATOR_I
         i_stream >> o_value.m_blending;
         SEPARATOR_I
         i_stream >> o_value.m_copyOpacity;
         SEPARATOR_I
-        i_stream >> o_value.m_unknown;
+        i_stream >> o_value.m_legacyHSV;
         SEPARATOR_I
         i_stream >> o_value.m_playerColor;
         SEPARATOR_I
@@ -35,7 +35,7 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PACAState& o_value) {
         SEPARATOR_I
         i_stream >> o_value.m_copyID;
         SEPARATOR_I
-        i_stream >> o_value.m_unknown2;
+        i_stream >> o_value.m_uniqueID;
         SEPARATOR_I
         i_stream >> o_value.m_duration;
         SEPARATOR_I
@@ -45,7 +45,7 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PACAState& o_value) {
         SEPARATOR_I
         i_stream >> o_value.m_deltaTime;
         SEPARATOR_I
-        i_stream >> o_value.m_unknown3;
+        i_stream >> o_value.m_currentOpacity;
         SEPARATOR_I
         i_stream >> o_value.m_copyHSV;
     } else {
@@ -61,13 +61,13 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PACAState& i_value) {
     SEPARATOR_O
     o_stream << i_value.m_color;
     SEPARATOR_O
-    o_stream << i_value.m_property19;
+    o_stream << i_value.m_paused;
     SEPARATOR_O
     o_stream << i_value.m_blending;
     SEPARATOR_O
     o_stream << i_value.m_copyOpacity;
     SEPARATOR_O
-    o_stream << i_value.m_unknown;
+    o_stream << i_value.m_legacyHSV;
     SEPARATOR_O
     o_stream << i_value.m_playerColor;
     SEPARATOR_O
@@ -75,7 +75,7 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PACAState& i_value) {
     SEPARATOR_O
     o_stream << i_value.m_copyID;
     SEPARATOR_O
-    o_stream << i_value.m_unknown2;
+    o_stream << i_value.m_uniqueID;
     SEPARATOR_O
     o_stream << i_value.m_duration;
     SEPARATOR_O
@@ -85,7 +85,7 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PACAState& i_value) {
     SEPARATOR_O
     o_stream << i_value.m_deltaTime;
     SEPARATOR_O
-    o_stream << i_value.m_unknown3;
+    o_stream << i_value.m_currentOpacity;
     SEPARATOR_O
     o_stream << i_value.m_copyHSV;
     SEPARATOR_O;
@@ -96,19 +96,19 @@ void PACAState::describe() {
     log::info("[PACAState - describe] m_fromColor: {}", m_fromColor);
     log::info("[PACAState - describe] m_toColor: {}", m_toColor);
     log::info("[PACAState - describe] m_color: {}", m_color);
-    log::info("[PACAState - describe] m_property19: {}", m_property19);
+    log::info("[PACAState - describe] m_paused: {}", m_paused);
     log::info("[PACAState - describe] m_blending: {}", m_blending);
     log::info("[PACAState - describe] m_copyOpacity: {}", m_copyOpacity);
-    log::info("[PACAState - describe] m_unknown: {}", m_unknown);
+    log::info("[PACAState - describe] m_legacyHSV: {}", m_legacyHSV);
     log::info("[PACAState - describe] m_playerColor: {}", m_playerColor);
     log::info("[PACAState - describe] m_colorID: {}", m_colorID);
     log::info("[PACAState - describe] m_copyID: {}", m_copyID);
-    log::info("[PACAState - describe] m_unknown2: {}", m_unknown2);
+    log::info("[PACAState - describe] m_uniqueID: {}", m_uniqueID);
     log::info("[PACAState - describe] m_duration: {}", m_duration);
     log::info("[PACAState - describe] m_fromOpacity: {}", m_fromOpacity);
     log::info("[PACAState - describe] m_toOpacity: {}", m_toOpacity);
     log::info("[PACAState - describe] m_deltaTime: {}", m_deltaTime);
-    log::info("[PACAState - describe] m_unknown3: {}", m_unknown3);
+    log::info("[PACAState - describe] m_currentOpacity: {}", m_currentOpacity);
     log::info("[PACAState - describe] m_copyHSV.h: {}", m_copyHSV.h);
     log::info("[PACAState - describe] m_copyHSV.s: {}", m_copyHSV.s);
     log::info("[PACAState - describe] m_copyHSV.v: {}", m_copyHSV.v);

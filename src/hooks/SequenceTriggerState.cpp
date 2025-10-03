@@ -34,7 +34,7 @@ void PASequenceTriggerState::describe() {
     int l_size = m_unkUnorderedMap1.size();
     log::info("[PASequenceTriggerState - describe] m_unkUnorderedMap1.size(): {}", l_size);
     int i = 0;
-    for (std::pair<int,float> l_pair : m_unkUnorderedMap1) {
+    for (gd::pair<int,float> l_pair : m_unkUnorderedMap1) {
         log::info("[PASequenceTriggerState - describe] m_unkUnorderedMap1 element {} key: {}", i, l_pair.first);
         log::info("[PASequenceTriggerState - describe] m_unkUnorderedMap1 element {} value: {}", i, l_pair.second);
         i++;
@@ -42,7 +42,7 @@ void PASequenceTriggerState::describe() {
     l_size = m_unkUnorderedMap2.size();
     log::info("[PASequenceTriggerState - describe] m_unkUnorderedMap2.size(): {}", l_size);
     i = 0;
-    for (std::pair<int,int> l_pair : m_unkUnorderedMap2) {
+    for (gd::pair<int,int> l_pair : m_unkUnorderedMap2) {
         log::info("[PASequenceTriggerState - describe] m_unkUnorderedMap2 element {} key: {}", i, l_pair.first);
         log::info("[PASequenceTriggerState - describe] m_unkUnorderedMap2 element {} value: {}", i, l_pair.second);
         i++;

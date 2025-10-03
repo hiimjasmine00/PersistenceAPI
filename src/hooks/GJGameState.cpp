@@ -174,7 +174,7 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAGJGameState& o_value)
     SEPARATOR_I
     i_stream >> o_value.m_currentChannel;
     SEPARATOR_I
-    i_stream >> o_value.m_unkInt17;
+    i_stream >> o_value.m_rotateChannel;
     SEPARATOR_I
     UMAP_SEPARATOR_I
     i_stream >> o_value.m_spawnChannelRelated0;
@@ -245,7 +245,7 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAGJGameState& o_value)
     SEPARATOR_I
     i_stream >> o_value.m_unkUint12;
     SEPARATOR_I
-    i_stream >> o_value.m_unkPoint31;
+    i_stream >> o_value.m_cameraStepDiff;
     SEPARATOR_I
     i_stream >> o_value.m_unkFloat10;
     SEPARATOR_I
@@ -261,7 +261,7 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAGJGameState& o_value)
     SEPARATOR_I
     i_stream >> o_value.m_unkPoint32;
     SEPARATOR_I
-    i_stream >> o_value.m_unkPoint33;
+    i_stream >> o_value.m_cameraPosition2;
     SEPARATOR_I
     i_stream >> o_value.m_unkBool20;
     SEPARATOR_I
@@ -296,27 +296,27 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAGJGameState& o_value)
     i_stream >> o_value.m_unkMapPairGJGameEventIntInt;
     MAP_SEPARATOR_I
     UMAP_SEPARATOR_I
-    i_stream >> o_value.m_unorderedMapEnterEffectInstanceVectors1;
+    i_stream >> o_value.m_enterEffectInstanceVectors;
     UMAP_SEPARATOR_I
-    i_stream >> o_value.m_unorderedMapEnterEffectInstanceVectors2;
+    i_stream >> o_value.m_exitEffectInstanceVectors;
     UMAP_SEPARATOR_I
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_unkVecInt1;
+    i_stream >> o_value.m_enterChannelMap;
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_unkVecInt2;
+    i_stream >> o_value.m_exitChannelMap;
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_enterEffectInstances1;
+    i_stream >> o_value.m_moveEffectInstances;
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_enterEffectInstances2;
+    i_stream >> o_value.m_rotateEffectInstances;
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_enterEffectInstances3;
+    i_stream >> o_value.m_scaleEffectInstances;
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_enterEffectInstances4;
+    i_stream >> o_value.m_fadeEffectInstances;
     VEC_SEPARATOR_I
-    i_stream >> o_value.m_enterEffectInstances5;
+    i_stream >> o_value.m_tintEffectInstances;
     VEC_SEPARATOR_I
     USET_SEPARATOR_I
-    i_stream >> o_value.m_unkUnorderedSet1;
+    i_stream >> o_value.m_unsortedAreaEffects;
     USET_SEPARATOR_I
     SEPARATOR_I
     i_stream >> o_value.m_unkBool27;
@@ -352,15 +352,15 @@ inline void persistenceAPI::operator>>(Stream& i_stream, PAGJGameState& o_value)
     SEPARATOR_I
     i_stream >> o_value.m_unkBool30;
     SEPARATOR_I
-    i_stream >> o_value.m_unkUint18;
+    i_stream >> o_value.m_background;
     SEPARATOR_I
     i_stream >> o_value.m_ground;
     SEPARATOR_I
-    i_stream >> o_value.m_unkUint19;
+    i_stream >> o_value.m_middleground;
     SEPARATOR_I
     i_stream >> o_value.m_unkBool31;
     SEPARATOR_I
-    i_stream >> o_value.m_unkUint20;
+    i_stream >> o_value.m_points;
     SEPARATOR_I
     i_stream >> o_value.m_unkBool32;
     SEPARATOR_I
@@ -519,7 +519,7 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAGJGameState& i_value)
     SEPARATOR_O
     o_stream << i_value.m_currentChannel;
     SEPARATOR_O
-    o_stream << i_value.m_unkInt17;
+    o_stream << i_value.m_rotateChannel;
     SEPARATOR_O
     UMAP_SEPARATOR_O
     o_stream << i_value.m_spawnChannelRelated0;
@@ -590,7 +590,7 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAGJGameState& i_value)
     SEPARATOR_O
     o_stream << i_value.m_unkUint12;
     SEPARATOR_O
-    o_stream << i_value.m_unkPoint31;
+    o_stream << i_value.m_cameraStepDiff;
     SEPARATOR_O
     o_stream << i_value.m_unkFloat10;
     SEPARATOR_O
@@ -606,7 +606,7 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAGJGameState& i_value)
     SEPARATOR_O
     o_stream << i_value.m_unkPoint32;
     SEPARATOR_O
-    o_stream << i_value.m_unkPoint33;
+    o_stream << i_value.m_cameraPosition2;
     SEPARATOR_O
     o_stream << i_value.m_unkBool20;
     SEPARATOR_O
@@ -641,27 +641,27 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAGJGameState& i_value)
     o_stream << i_value.m_unkMapPairGJGameEventIntInt;
     MAP_SEPARATOR_O
     UMAP_SEPARATOR_O
-    o_stream << i_value.m_unorderedMapEnterEffectInstanceVectors1;
+    o_stream << i_value.m_enterEffectInstanceVectors;
     UMAP_SEPARATOR_O
-    o_stream << i_value.m_unorderedMapEnterEffectInstanceVectors2;
+    o_stream << i_value.m_exitEffectInstanceVectors;
     UMAP_SEPARATOR_O
     VEC_SEPARATOR_O
-    o_stream << i_value.m_unkVecInt1;
+    o_stream << i_value.m_enterChannelMap;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_unkVecInt2;
+    o_stream << i_value.m_exitChannelMap;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_enterEffectInstances1;
+    o_stream << i_value.m_moveEffectInstances;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_enterEffectInstances2;
+    o_stream << i_value.m_rotateEffectInstances;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_enterEffectInstances3;
+    o_stream << i_value.m_scaleEffectInstances;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_enterEffectInstances4;
+    o_stream << i_value.m_fadeEffectInstances;
     VEC_SEPARATOR_O
-    o_stream << i_value.m_enterEffectInstances5;
+    o_stream << i_value.m_tintEffectInstances;
     VEC_SEPARATOR_O
     USET_SEPARATOR_O
-    o_stream << i_value.m_unkUnorderedSet1;
+    o_stream << i_value.m_unsortedAreaEffects;
     USET_SEPARATOR_O
     SEPARATOR_O
     o_stream << i_value.m_unkBool27;
@@ -697,15 +697,15 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAGJGameState& i_value)
     SEPARATOR_O
     o_stream << i_value.m_unkBool30;
     SEPARATOR_O
-    o_stream << i_value.m_unkUint18;
+    o_stream << i_value.m_background;
     SEPARATOR_O
     o_stream << i_value.m_ground;
     SEPARATOR_O
-    o_stream << i_value.m_unkUint19;
+    o_stream << i_value.m_middleground;
     SEPARATOR_O
     o_stream << i_value.m_unkBool31;
     SEPARATOR_O
-    o_stream << i_value.m_unkUint20;
+    o_stream << i_value.m_points;
     SEPARATOR_O
     o_stream << i_value.m_unkBool32;
     SEPARATOR_O
@@ -716,30 +716,30 @@ inline void persistenceAPI::operator<<(Stream& o_stream, PAGJGameState& i_value)
 }
 
 void PAGJGameState::clean() {
-    for (std::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_unorderedMapEnterEffectInstanceVectors1) {
+    for (gd::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_enterEffectInstanceVectors) {
         l_pair.second.clear();
         gd::vector<EnterEffectInstance>().swap(l_pair.second);
     }
 
-    for (std::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_unorderedMapEnterEffectInstanceVectors2) {
+    for (gd::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_exitEffectInstanceVectors) {
         l_pair.second.clear();
         gd::vector<EnterEffectInstance>().swap(l_pair.second);
     }
 
-    m_enterEffectInstances1.clear();
-    gd::vector<EnterEffectInstance>().swap(m_enterEffectInstances1);
+    m_moveEffectInstances.clear();
+    gd::vector<EnterEffectInstance>().swap(m_moveEffectInstances);
 
-    m_enterEffectInstances2.clear();
-    gd::vector<EnterEffectInstance>().swap(m_enterEffectInstances2);
+    m_rotateEffectInstances.clear();
+    gd::vector<EnterEffectInstance>().swap(m_rotateEffectInstances);
 
-    m_enterEffectInstances3.clear();
-    gd::vector<EnterEffectInstance>().swap(m_enterEffectInstances3);
+    m_scaleEffectInstances.clear();
+    gd::vector<EnterEffectInstance>().swap(m_scaleEffectInstances);
 
-    m_enterEffectInstances4.clear();
-    gd::vector<EnterEffectInstance>().swap(m_enterEffectInstances4);
+    m_fadeEffectInstances.clear();
+    gd::vector<EnterEffectInstance>().swap(m_fadeEffectInstances);
 
-    m_enterEffectInstances5.clear();
-    gd::vector<EnterEffectInstance>().swap(m_enterEffectInstances5);
+    m_tintEffectInstances.clear();
+    gd::vector<EnterEffectInstance>().swap(m_tintEffectInstances);
 
     m_advanceFollowInstances.clear();
     gd::vector<AdvancedFollowInstance>().swap(m_advanceFollowInstances);
@@ -821,15 +821,15 @@ void PAGJGameState::describe() {
     log::info("[PAGJGameState - describe] m_timeWarp: {}", m_timeWarp);
     log::info("[PAGJGameState - describe] m_timeWarpRelated: {}", m_timeWarpRelated);
     log::info("[PAGJGameState - describe] m_currentChannel: {}", m_currentChannel);
-    log::info("[PAGJGameState - describe] m_unkInt17: {}", m_unkInt17);
+    log::info("[PAGJGameState - describe] m_rotateChannel: {}", m_rotateChannel);
     int i = 0;
-    for (std::pair<int, int> l_pair : m_spawnChannelRelated0) {
+    for (gd::pair<int, int> l_pair : m_spawnChannelRelated0) {
         log::info("[PAGJGameState - describe] m_spawnChannelRelated0 element {} key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_spawnChannelRelated0 element {} value: {}", i, l_pair.second);
         i++;
     }
     i = 0;
-    for (std::pair<int, bool> l_pair : m_spawnChannelRelated1) {
+    for (gd::pair<int, bool> l_pair : m_spawnChannelRelated1) {
         log::info("[PAGJGameState - describe] m_spawnChannelRelated1 element {} key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_spawnChannelRelated1 element {} value: {}", i, l_pair.second);
         i++;
@@ -861,7 +861,7 @@ void PAGJGameState::describe() {
     int l_size = m_tweenActions.size();
     log::info("[PAGJGameState - describe] m_tweenActions.size(): {}", l_size);
     i = 0;
-    for (std::pair<int,GJValueTween> l_pair : m_tweenActions) {
+    for (gd::pair<int,GJValueTween> l_pair : m_tweenActions) {
         log::info("[PAGJGameState - describe] m_tweenActions element {} key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_tweenActions element {} value:", i);
         reinterpret_cast<PAGJValueTween*>(&l_pair.second)->describe();
@@ -874,7 +874,7 @@ void PAGJGameState::describe() {
     l_size = m_gameObjectPhysics.size();
     log::info("[PAGJGameState - describe] m_gameObjectPhysics.size(): {}", l_size);
     i = 0;
-    for (std::pair<int,GameObjectPhysics> l_pair : m_gameObjectPhysics) {
+    for (gd::pair<int,GameObjectPhysics> l_pair : m_gameObjectPhysics) {
         log::info("[PAGJGameState - describe] m_gameObjectPhysics element {} key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_gameObjectPhysics element {} value:", i);
         reinterpret_cast<PAGameObjectPhysics*>(&l_pair.second)->describe();
@@ -888,19 +888,19 @@ void PAGJGameState::describe() {
     log::info("[PAGJGameState - describe] m_unkUint10: {}", m_unkUint10);
     log::info("[PAGJGameState - describe] m_unkUint11: {}", m_unkUint11);
     log::info("[PAGJGameState - describe] m_unkUint12: {}", m_unkUint12);
-    log::info("[PAGJGameState - describe] m_unkPoint31: {}", m_unkPoint31);
+    log::info("[PAGJGameState - describe] m_cameraStepDiff: {}", m_cameraStepDiff);
     log::info("[PAGJGameState - describe] m_unkFloat10: {}", m_unkFloat10);
     log::info("[PAGJGameState - describe] m_timeModRelated: {}", m_timeModRelated);
     log::info("[PAGJGameState - describe] m_timeModRelated2: {}", m_timeModRelated2);
     i = 0;
-    for (std::pair<std::pair<int, int>, int> l_pair : m_unkMapPairIntIntInt) {
+    for (gd::pair<std::pair<int, int>, int> l_pair : m_unkMapPairIntIntInt) {
         log::info("[PAGJGameState - describe] m_unkMapPairIntIntInt element {} key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_unkMapPairIntIntInt element {} value: {}", i, l_pair.second);
         i++;
     }
     log::info("[PAGJGameState - describe] m_unkUint13: {}", m_unkUint13);
     log::info("[PAGJGameState - describe] m_unkPoint32: {}", m_unkPoint32);
-    log::info("[PAGJGameState - describe] m_unkPoint33: {}", m_unkPoint33);
+    log::info("[PAGJGameState - describe] m_cameraPosition2: {}", m_cameraPosition2);
     log::info("[PAGJGameState - describe] m_unkBool20: {}", m_unkBool20);
     log::info("[PAGJGameState - describe] m_unkBool21: {}", m_unkBool21);
     log::info("[PAGJGameState - describe] m_unkBool22: {}", m_unkBool22);
@@ -914,7 +914,7 @@ void PAGJGameState::describe() {
     log::info("[PAGJGameState - describe] m_unkPoint34: {}", m_unkPoint34);
     log::info("[PAGJGameState - describe] m_dualRelated: {}", m_dualRelated);
     i = 0;
-    for (std::pair<int, EnhancedGameObject*> l_pair : m_stateObjects) {
+    for (gd::pair<int, EnhancedGameObject*> l_pair : m_stateObjects) {
         log::info("[PAGJGameState - describe] m_stateObjects element {} key: {}", i, l_pair.first);
         int l_objectIndex = -1;
         PAPlayLayer* l_playLayer = static_cast<PAPlayLayer*>(PlayLayer::get());
@@ -923,7 +923,7 @@ void PAGJGameState::describe() {
         i++;
     }
     i = 0;
-    for (std::pair<std::pair<GJGameEvent,int>, gd::vector<EventTriggerInstance>> l_pair : m_unkMapPairGJGameEventIntVectorEventTriggerInstance) {
+    for (gd::pair<std::pair<GJGameEvent,int>, gd::vector<EventTriggerInstance>> l_pair : m_unkMapPairGJGameEventIntVectorEventTriggerInstance) {
         log::info("[PAGJGameState - describe] m_unkMapPairGJGameEventIntVectorEventTriggerInstance element {} key.key: {}", i, *reinterpret_cast<int*>(&l_pair.first.first));
         log::info("[PAGJGameState - describe] m_unkMapPairGJGameEventIntVectorEventTriggerInstance element {} key.value: {}", i, l_pair.first.second);
         log::info("[PAGJGameState - describe] m_unkMapPairGJGameEventIntVectorEventTriggerInstance element {} value:", i);
@@ -936,79 +936,79 @@ void PAGJGameState::describe() {
         i++;
     }
     i = 0;
-    for (std::pair<std::pair<GJGameEvent,int>, int> l_pair : m_unkMapPairGJGameEventIntInt) {
+    for (gd::pair<std::pair<GJGameEvent,int>, int> l_pair : m_unkMapPairGJGameEventIntInt) {
         log::info("[PAGJGameState - describe] m_unkMapPairGJGameEventIntInt element {} key.key: {}", i, *reinterpret_cast<int*>(&l_pair.first.first));
         log::info("[PAGJGameState - describe] m_unkMapPairGJGameEventIntInt element {} key.value: {}", i, l_pair.first.second);
         log::info("[PAGJGameState - describe] m_unkMapPairGJGameEventIntInt element {} value: {}", i, l_pair.second);
         i++;
     }
     i = 0;
-    for (std::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_unorderedMapEnterEffectInstanceVectors1) {
-        log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors1 element {} key.key: {}", i, l_pair.first);
-        log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors1 element {} value:", i);
+    for (gd::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_enterEffectInstanceVectors) {
+        log::info("[PAGJGameState - describe] m_enterEffectInstanceVectors element {} key.key: {}", i, l_pair.first);
+        log::info("[PAGJGameState - describe] m_enterEffectInstanceVectors element {} value:", i);
         l_size = l_pair.second.size();
-        log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors1 element {} value.size(): {}", i, l_size);
+        log::info("[PAGJGameState - describe] m_enterEffectInstanceVectors element {} value.size(): {}", i, l_size);
         for (int j = 0; j < l_size; j++) {
-            log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors1 element {} value[{}]:", i, j);
+            log::info("[PAGJGameState - describe] m_enterEffectInstanceVectors element {} value[{}]:", i, j);
             reinterpret_cast<PAEnterEffectInstance*>(&l_pair.second[j])->describe();
         }
         i++;
     }
     i = 0;
-    for (std::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_unorderedMapEnterEffectInstanceVectors2) {
-        log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors2 element {} key.key: {}", i, l_pair.first);
-        log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors2 element {} value:", i);
+    for (gd::pair<int, gd::vector<EnterEffectInstance>> l_pair : m_exitEffectInstanceVectors) {
+        log::info("[PAGJGameState - describe] m_exitEffectInstanceVectors element {} key.key: {}", i, l_pair.first);
+        log::info("[PAGJGameState - describe] m_exitEffectInstanceVectors element {} value:", i);
         l_size = l_pair.second.size();
-        log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors2 element {} value.size(): {}", i, l_size);
+        log::info("[PAGJGameState - describe] m_exitEffectInstanceVectors element {} value.size(): {}", i, l_size);
         for (int j = 0; j < l_size; j++) {
-            log::info("[PAGJGameState - describe] m_unorderedMapEnterEffectInstanceVectors2 element {} value[{}]:", i, j);
+            log::info("[PAGJGameState - describe] m_exitEffectInstanceVectors element {} value[{}]:", i, j);
             reinterpret_cast<PAEnterEffectInstance*>(&l_pair.second[j])->describe();
         }
         i++;
     }
-    l_size = m_unkVecInt1.size();
-    log::info("[PAGJGameState - describe] m_unkVecInt1.size(): {}", l_size);
+    l_size = m_enterChannelMap.size();
+    log::info("[PAGJGameState - describe] m_enterChannelMap.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAGJGameState - describe] m_unkVecInt1[{}]: {}", i, m_unkVecInt1[i]);
+        log::info("[PAGJGameState - describe] m_enterChannelMap[{}]: {}", i, m_enterChannelMap[i]);
     }
-    l_size = m_unkVecInt2.size();
-    log::info("[PAGJGameState - describe] m_unkVecInt2.size(): {}", l_size);
+    l_size = m_exitChannelMap.size();
+    log::info("[PAGJGameState - describe] m_exitChannelMap.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAGJGameState - describe] m_unkVecInt2[{}]: {}", i, m_unkVecInt2[i]);
+        log::info("[PAGJGameState - describe] m_exitChannelMap[{}]: {}", i, m_exitChannelMap[i]);
     }
-    l_size = m_enterEffectInstances1.size();
-    log::info("[PAGJGameState - describe] m_enterEffectInstances1.size(): {}", l_size);
+    l_size = m_moveEffectInstances.size();
+    log::info("[PAGJGameState - describe] m_moveEffectInstances.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAGJGameState - describe] m_enterEffectInstances1[{}]:", i);
-        reinterpret_cast<PAEnterEffectInstance*>(&m_enterEffectInstances1[i])->describe();
+        log::info("[PAGJGameState - describe] m_moveEffectInstances[{}]:", i);
+        reinterpret_cast<PAEnterEffectInstance*>(&m_moveEffectInstances[i])->describe();
     }
-    l_size = m_enterEffectInstances2.size();
-    log::info("[PAGJGameState - describe] m_enterEffectInstances2.size(): {}", l_size);
+    l_size = m_rotateEffectInstances.size();
+    log::info("[PAGJGameState - describe] m_rotateEffectInstances.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAGJGameState - describe] m_enterEffectInstances2[{}]:", i);
-        reinterpret_cast<PAEnterEffectInstance*>(&m_enterEffectInstances2[i])->describe();
+        log::info("[PAGJGameState - describe] m_rotateEffectInstances[{}]:", i);
+        reinterpret_cast<PAEnterEffectInstance*>(&m_rotateEffectInstances[i])->describe();
     }
-    l_size = m_enterEffectInstances3.size();
-    log::info("[PAGJGameState - describe] m_enterEffectInstances3.size(): {}", l_size);
+    l_size = m_scaleEffectInstances.size();
+    log::info("[PAGJGameState - describe] m_scaleEffectInstances.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAGJGameState - describe] m_enterEffectInstances3[{}]:", i);
-        reinterpret_cast<PAEnterEffectInstance*>(&m_enterEffectInstances3[i])->describe();
+        log::info("[PAGJGameState - describe] m_scaleEffectInstances[{}]:", i);
+        reinterpret_cast<PAEnterEffectInstance*>(&m_scaleEffectInstances[i])->describe();
     }
-    l_size = m_enterEffectInstances4.size();
-    log::info("[PAGJGameState - describe] m_enterEffectInstances4.size(): {}", l_size);
+    l_size = m_fadeEffectInstances.size();
+    log::info("[PAGJGameState - describe] m_fadeEffectInstances.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAGJGameState - describe] m_enterEffectInstances4[{}]:", i);
-        reinterpret_cast<PAEnterEffectInstance*>(&m_enterEffectInstances4[i])->describe();
+        log::info("[PAGJGameState - describe] m_fadeEffectInstances[{}]:", i);
+        reinterpret_cast<PAEnterEffectInstance*>(&m_fadeEffectInstances[i])->describe();
     }
-    l_size = m_enterEffectInstances5.size();
-    log::info("[PAGJGameState - describe] m_enterEffectInstances5.size(): {}", l_size);
+    l_size = m_tintEffectInstances.size();
+    log::info("[PAGJGameState - describe] m_tintEffectInstances.size(): {}", l_size);
     for (int i = 0; i < l_size; i++) {
-        log::info("[PAGJGameState - describe] m_enterEffectInstances5[{}]:", i);
-        reinterpret_cast<PAEnterEffectInstance*>(&m_enterEffectInstances5[i])->describe();
+        log::info("[PAGJGameState - describe] m_tintEffectInstances[{}]:", i);
+        reinterpret_cast<PAEnterEffectInstance*>(&m_tintEffectInstances[i])->describe();
     }
     i = 0;
-    for (int l_value : m_unkUnorderedSet1) {
-        log::info("[PAGJGameState - describe] m_unkUnorderedSet1 element {} value: {}", i, l_value);
+    for (int l_value : m_unsortedAreaEffects) {
+        log::info("[PAGJGameState - describe] m_unsortedAreaEffects element {} value: {}", i, l_value);
         i++;
     }
     log::info("[PAGJGameState - describe] m_unkBool27: {}", m_unkBool27);
@@ -1034,7 +1034,7 @@ void PAGJGameState::describe() {
     log::info("[PAGJGameState - describe] m_unkBool29: {}", m_unkBool29);
     log::info("[PAGJGameState - describe] m_unkUint17: {}", m_unkUint17);
     i = 0;
-    for (std::pair<int, gd::vector<int>> l_pair : m_unkUMap8) {
+    for (gd::pair<int, gd::vector<int>> l_pair : m_unkUMap8) {
         log::info("[PAGJGameState - describe] m_unkUMap8 element {} key.key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_unkUMap8 element {} value:", i);
         l_size = l_pair.second.size();
@@ -1045,7 +1045,7 @@ void PAGJGameState::describe() {
         i++;
     }
     i = 0;
-    for (std::pair<std::pair<int, int>, SFXTriggerInstance> l_pair : m_proximityVolumeRelated) {
+    for (gd::pair<std::pair<int, int>, SFXTriggerInstance> l_pair : m_proximityVolumeRelated) {
         log::info("[PAGJGameState - describe] m_proximityVolumeRelated element {} key.key: {}", i, l_pair.first.first);
         log::info("[PAGJGameState - describe] m_proximityVolumeRelated element {} key.value: {}", i, l_pair.first.second);
         log::info("[PAGJGameState - describe] m_proximityVolumeRelated element {} value:", i);
@@ -1053,14 +1053,14 @@ void PAGJGameState::describe() {
         i++;
     }
     i = 0;
-    for (std::pair<int, SongChannelState> l_pair : m_songChannelStates) {
+    for (gd::pair<int, SongChannelState> l_pair : m_songChannelStates) {
         log::info("[PAGJGameState - describe] m_songChannelStates element {} key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_songChannelStates element {} value:", i);
         reinterpret_cast<PASongChannelState*>(&l_pair.second)->describe();
         i++;
     }
     i = 0;
-    for (std::pair<int, gd::vector<SongTriggerState>> l_pair : m_songTriggerStateVectors) {
+    for (gd::pair<int, gd::vector<SongTriggerState>> l_pair : m_songTriggerStateVectors) {
         log::info("[PAGJGameState - describe] m_songTriggerStateVectors element {} key.key: {}", i, l_pair.first);
         log::info("[PAGJGameState - describe] m_songTriggerStateVectors element {} value:", i);
         l_size = l_pair.second.size();
@@ -1078,11 +1078,11 @@ void PAGJGameState::describe() {
         reinterpret_cast<PASFXTriggerState*>(&m_sfxTriggerStates[i])->describe();
     }
     log::info("[PAGJGameState - describe] m_unkBool30: {}", m_unkBool30);
-    log::info("[PAGJGameState - describe] m_unkUint18: {}", m_unkUint18);
+    log::info("[PAGJGameState - describe] m_background: {}", m_background);
     log::info("[PAGJGameState - describe] m_ground: {}", m_ground);
-    log::info("[PAGJGameState - describe] m_unkUint19: {}", m_unkUint19);
+    log::info("[PAGJGameState - describe] m_middleground: {}", m_middleground);
     log::info("[PAGJGameState - describe] m_unkBool31: {}", m_unkBool31);
-    log::info("[PAGJGameState - describe] m_unkUint20: {}", m_unkUint20);
+    log::info("[PAGJGameState - describe] m_points: {}", m_points);
     log::info("[PAGJGameState - describe] m_unkBool32: {}", m_unkBool32);
     log::info("[PAGJGameState - describe] m_pauseCounter: {}", m_pauseCounter);
     log::info("[PAGJGameState - describe] m_pauseBufferTimer: {}", m_pauseBufferTimer);
